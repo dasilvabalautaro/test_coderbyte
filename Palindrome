@@ -1,0 +1,56 @@
+//Palindrome recursive 
+//Eliminate characters that harm.
+
+function isAlphaNumeric(value: string) {
+  return value.match(/^[A-Za-zo-9]+$/);
+}
+
+function isPalindrome(s: string): string {
+  let rejected = "";
+  let j = s.length -1;
+  let index = -1;
+
+  for(let i = 0; i < j; i++, j--){
+    while (i < j && !isAlphaNumeric(s[i])){
+      i++;
+    }
+    while (i < j && !isAlphaNumeric(s[j])){
+      j--;
+    }
+    if (i < j && s[i].toLowerCase() !== s[j].toLowerCase()){
+      rejected = s[i];
+      index = i;
+      break
+    }
+  }
+
+  if (rejected === ""){
+    return rejected;
+  }
+
+  let newStr = "";
+
+  for (let i = 0; i < s.length; i++){
+    if (i != index){
+      newStr += s[i];
+    }
+  }
+
+  let result = isPalindrome(newStr);
+
+  return += result;
+};
+
+const inputStr = "gjjjhjjj";
+
+let result = isPalindrome(inputStr);
+
+if ((inputStr.length - result.length) === 1){
+  console.log("Not possible");
+} 
+else if (result === ""){
+  console.log(inputStr);
+}
+else {
+  console.log(result);
+}
